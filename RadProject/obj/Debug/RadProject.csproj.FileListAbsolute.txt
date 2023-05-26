@@ -130,3 +130,4 @@ C:\Soft\workspace\RadProject-master\RadProject\obj\Debug\RadProject.csproj.CoreC
 C:\Soft\workspace\RadProject-master\RadProject\obj\Debug\RadProject.csproj.CopyComplete
 C:\Soft\workspace\RadProject-master\RadProject\obj\Debug\RadProject.exe
 C:\Soft\workspace\RadProject-master\RadProject\obj\Debug\RadProject.pdb
+C:\Soft\workspace\RadProject-master\RadProject\obj\Debug\RadProject.AddGoodsIntoContractForm.resources

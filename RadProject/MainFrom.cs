@@ -72,6 +72,9 @@ namespace RadProject
             if (this.Controls.Contains(goods))
                 goods.Columns.Clear();
 
+            if (button5.Visible == true)
+                button5.Visible = false;
+
             // Опредляем в какую таблицу сейчас надо отобразить
             if (current_table == "Client" || current_table == "Goods")
             {
@@ -161,10 +164,10 @@ namespace RadProject
             DataTable dt = new DataTable();
 
             // Сложный запрос, в краце: среди товаров берет те, которые указаны в id-договоре, групирует по товарам, считает количество и сумму
-            string sql = @"SELECT go.title, go.description, go.unit, count(go.title), sum(go.price) FROM Goods go
+            string sql = @"SELECT go.title, go.description, go.unit, sum(cg.amount), go.price * sum(cg.amount) FROM Goods go
                             JOIN Contract_goods cg ON go.goods_id = cg.goods_id
                             JOIN Contract ct ON ct.contract_id = cg.contract_id and ct.contract_id = " + id + " " +
-                            "GROUP BY cg.goods_id, go.title, go.description, go.unit, go.price;";
+                            "GROUP BY go.title, go.description, go.unit, go.price;";
 
             //MessageBox.Show(sql);
 
@@ -273,6 +276,33 @@ namespace RadProject
 
             // добавляем для отображени на полотне
             this.Controls.Add(goods);
+
+            button5.Visible = true;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int id = (int)dataGridView1.CurrentRow.Cells[current_table + "_id"].Value;
+            AddGoodsIntoContractForm form = new AddGoodsIntoContractForm(this.con, id);
+            form.ShowDialog();
+            //update_view(current_table);
+
+            if (this.Controls.Contains(goods))
+                goods.Columns.Clear();
+
+            // наполнение (*)
+            goods.DataSource = select_all_goods_from_contract((int)dataGridView1.CurrentRow.Cells["Contract_id"].Value);
+
+            // русификация
+            string[] coColumns = { "Название товара", "Описание", "Ед. измерения", "Количество", "Сумма" };
+            foreach (DataGridViewColumn col in goods.Columns)
+            {
+                col.HeaderText = coColumns[col.Index];
+            }
+
+            // добавляем для отображени на полотне
+            this.Controls.Add(goods);
+
         }
     }
 }

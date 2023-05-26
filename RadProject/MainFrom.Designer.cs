@@ -41,6 +41,7 @@ namespace RadProject
             this.удалитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.table_label = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -158,12 +159,24 @@ namespace RadProject
             this.table_label.Text = "Имя таблицы";
             this.table_label.Click += new System.EventHandler(this.label1_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(758, 551);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(200, 23);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Добавить новый товар в договор";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // MainFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(970, 586);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.table_label);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button4);
@@ -197,5 +210,6 @@ namespace RadProject
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изменитьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem1;
+        private System.Windows.Forms.Button button5;
     }
 }
